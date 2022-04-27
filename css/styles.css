@@ -1,0 +1,590 @@
+html {
+  min-height: 100%;
+}
+body{
+  font-family: poppins;
+  color: #808080;
+  background-color: whitesmoke;
+  background: url("../img/bg.png") no-repeat left bottom;
+
+}
+.btn-primary {
+  width: 125px;
+}
+.link{
+  color: #808080;
+  cursor: pointer;
+}
+.text-center {
+  text-align: center;
+}
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+.bold{
+  font-weight: bold;
+}
+.kipsian-btn{
+  text-align: center;
+}
+.form-group{
+  padding-left: 17px;
+  position: relative;
+  float: left;
+}
+.form-horizontal .form-group {
+   margin-right: 0px;
+   margin-left: 0px;
+}
+.modal-btn{
+  margin-top: 25px;
+}
+.modal-body{
+  padding: 35px;
+}
+.text-black{
+  color: black;
+}
+.text-red{
+  color: #cc090f;
+}
+.form-control {
+  border-radius: 6px;
+  border: none;
+  background-color:#e9e7e7;
+  height: 55px
+
+}
+hr{
+  margin-top: 80px;
+  border-top: 1px solid #808080;
+}
+label {
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 5px;
+  font-weight: 70;
+  color: #808080;
+}
+.h5, h5 {
+  font-weight: bold;
+}
+.logo-div{
+  text-align: right;margin-left: 4.1%;width: 15.667%;
+}
+.logo-img{
+  height: 140px;
+  width: 140px;
+
+}
+.detail-logo-img{
+  height: 210px;
+  width: 268px;
+
+
+}
+.navbar {
+  min-height: 130px;
+  margin-bottom: 0;
+  border-radius: 3px;
+  height: 111px;
+  /*background-color: #ae2b31;*/
+  background-color: #cc090f;
+  margin-top: 10px;
+  border: none;
+  margin-right: -120px;
+
+}
+#model-heading{
+  background-color: #cc090f !important;
+  color: white;
+
+}
+.heading-div{
+  color: #ffffff;
+  padding-top: 22px;
+  padding-left: 30px;
+}
+.heading-down{
+  font-weight: bold;
+  color: #ffffff;
+  padding-left: 9px;
+}
+.main-form{
+  padding: 0px !important;
+}
+.mainbox{
+  position: relative;
+  -moz-box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+  padding: 10px;
+  background: white;
+  float: left;
+  margin: 9px;
+  border-radius: 5px !important;
+}
+.mainbox::after {
+  content: '';
+  position: absolute;
+  z-index: -1; /* hide shadow behind image */
+  -webkit-box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
+  width: 75%;
+  left: 15%; /* one half of the remaining 30% */
+  height: 100px;
+  bottom: 0;
+}
+
+.user_name{
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+.bottom_div_sms{
+  margin-top: 55px;
+}
+.btn-primary {
+  color: #fff;
+  background-color: #b10f14;
+/*  background-color: #ae2b31;
+  border-color: #ae2b31;*/
+  border-color: #b10f14;
+  margin-left: 13px;
+  text-align: center;
+}
+.btn-div{
+  text-align: left;
+  padding-top: 60px;
+}
+.btn-div-wizard{
+  text-align: center;
+  padding-top: 60px;
+}
+.kipsian{
+   margin-top: 100px;
+   border: none;
+  border-radius: 5px;
+   display: inline-block;
+  box-shadow: 0px 10px 10px -7px rgba(0, 0, 0, 0.3);
+  width: 160px;
+  height: 150px;
+  padding: 21px;
+  cursor: pointer;
+  margin-bottom: 30px;
+ }
+.new-kipsian{
+  margin-top: 100px;
+  border: none;
+  border-radius: 5px;
+  display: inline-block;
+  margin-left: 10%;
+  box-shadow: 0px 10px 10px -7px rgba(0, 0, 0, 0.3);
+  width: 160px;
+  height: 152px;
+  padding: 21px;
+  cursor: pointer;
+  margin-bottom: 30px;
+}
+.online{
+  margin-top: 100px;
+  border: none;
+  border-radius: 5px;
+  display: inline-block;
+  box-shadow: 0px 10px 10px -7px rgba(0, 0, 0, 0.3);
+  width: 160px;
+  height: 150px;
+  padding: 21px;
+  cursor: pointer;
+  margin-bottom: 30px;
+}
+.selectDiv{
+  margin-top: 100px;
+  background-color: silver;
+  display: inline-block;
+  box-shadow: 0px 10px 10px -7px rgba(0, 0, 0, 0.3);
+  width: 160px;
+  border-radius: 5px;
+  height: 150px;
+  padding: 21px;
+  cursor: pointer;
+  margin-bottom: 30px;
+}
+.on-campus{
+  margin-top: 100px;
+  border: none;
+  border-radius: 5px;
+  display: inline-block;
+  margin-left: 10%;
+  box-shadow: 0px 10px 10px -7px rgba(0, 0, 0, 0.3);
+  width: 160px;
+  height: 152px;
+  padding: 21px;
+  cursor: pointer;
+  margin-bottom: 30px;
+}
+.grp_engr{
+  margin-top: 100px;
+  border: none;
+  border-radius: 5px;
+  display: inline-block;
+  box-shadow: 0px 10px 10px -7px rgba(0, 0, 0, 0.3);
+  width: 160px;
+  height: auto;
+  cursor: pointer;
+  margin-bottom: 30px;
+}
+.grp_medical{
+  margin-top: 100px;
+  border: none;
+  border-radius: 5px;
+  display: inline-block;
+  margin-left: 10%;
+  box-shadow: 0px 10px 10px -7px rgba(0, 0, 0, 0.3);
+  width: 160px;
+  height: auto;
+  cursor: pointer;
+  margin-bottom: 30px;
+}
+.grp_other{
+  margin-top: 100px;
+  border: none;
+  border-radius: 5px;
+  display: inline-block;
+  margin-left: 10%;
+  box-shadow: 0px 10px 10px -7px rgba(0, 0, 0, 0.3);
+  width: 160px;
+  height: auto;
+  cursor: pointer;
+  margin-bottom: 30px;
+}
+.courses{
+  margin-top: 100px;
+  border: none;
+  border-radius: 5px;
+  display: inline-block;
+  margin-left: 10%;
+  box-shadow: 0px 10px 10px -7px rgba(0, 0, 0, 0.3);
+  width: 163px;
+  height: 58px;
+  padding: 10px;
+  cursor: pointer;
+  margin-bottom: 30px;
+}
+.courses:active {
+  box-shadow: 0 3px 5px #666;
+  transform: translateY(4px);
+}
+.groups{
+  margin-top: 100px;
+  border: none;
+  border-radius: 5px;
+  display: inline-block;
+  margin-left: 10%;
+  box-shadow: 0px 10px 10px -7px rgba(0, 0, 0, 0.3);
+  width: 163px;
+  height: 58px;
+  padding: 10px;
+  cursor: pointer;
+  margin-bottom: 30px;
+}
+.groups:active {
+  box-shadow: 0 3px 5px #666;
+  transform: translateY(4px);
+}
+ul {
+  list-style: none;
+}
+
+ul li::before {
+  content: "\2022";
+  color: red;
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+
+
+
+/*Wizard Form*/
+
+#grad1 {
+background-color: transparent;
+}
+
+#msform {
+  text-align: center;
+  position: relative;
+  margin-top: 20px
+}
+
+#msform fieldset .form-card {
+  border: none;
+  padding: 20px 40px 30px 40px;
+  box-sizing: border-box;
+  width: 94%;
+  margin: 0 3% 20px 3%;
+  position: relative
+}
+#msform fieldset {
+  border: 0 none;
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  padding-bottom: 20px;
+  position: relative
+}
+
+#msform fieldset:not(:first-of-type) {
+  display: none
+}
+
+#msform fieldset .form-card {
+  text-align: left;
+  color: #9E9E9E
+}
+
+
+
+#msform .action-button {
+  font-family: Poppins;
+  width: 125px;
+  background: #b10f14;
+  font-weight: bold;
+  color: white;
+  border: 0 none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 15px 5px;
+  margin: 10px 5px
+}
+
+#msform .action-button:hover,
+#msform .action-button:focus {
+  box-shadow: 0 0 0 2px white, 0 0 0 3px #b10f14
+}
+
+#msform .action-button-previous {
+  font-family: Poppins;
+  width: 100px;
+  background: #616161;
+  font-weight: bold;
+  color: white;
+  border: 0 none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 15px 5px;
+  margin: 10px 5px
+
+}
+
+#msform .action-button-previous:hover,
+#msform .action-button-previous:focus {
+  box-shadow: 0 0 0 2px white, 0 0 0 3px #616161
+}
+.card {
+  z-index: 0;
+  border: none;
+  border-radius: 0.5rem;
+  position: relative
+}
+
+.fs-title {
+  font-size: 25px;
+  color: #2C3E50;
+  margin-bottom: 10px;
+  font-weight: bold;
+  text-align: left
+}
+
+#progressbar {
+  margin-bottom: 30px;
+  overflow: hidden;
+  color: lightgrey
+}
+
+#progressbar .active {
+  color: #000000
+}
+
+#progressbar li {
+  list-style-type: none;
+  font-size: 12px;
+  width: 13%;
+  float: left;
+  position: relative
+}
+
+#progressbar #one:before {
+  font-family: Poppins;
+  content: "\31";
+
+}
+
+#progressbar #two:before {
+  font-family: Poppins;
+  content: "\32"
+}
+
+#progressbar #three:before {
+  font-family: Poppins;
+  content: "\33"
+}
+
+#progressbar #four:before {
+  font-family: Poppins;
+  content: "\34"
+}
+
+#progressbar #five:before {
+  font-family: Poppins ;
+  content: "\35"
+}
+#progressbar #six:before {
+  font-family: Poppins ;
+  content: "\36"
+}
+#progressbar #seven:before {
+  font-family: Poppins ;
+  content: "\37"
+}
+#progressbar li:before {
+  width: 50px;
+  height: 50px;
+  line-height: 45px;
+  display: block;
+  font-size: 18px;
+  color: #ffffff;
+  background: lightgray;
+  border-radius: 50%;
+  margin: 0 auto 10px auto;
+  padding: 2px
+}
+
+#progressbar li:after {
+  content: '';
+  width: 100%;
+  height: 2px;
+  background: lightgray;
+  position: absolute;
+  left: 0;
+  top: 25px;
+  z-index: -1
+}
+
+#progressbar li.active:before,
+#progressbar li.active:after {
+  background: #b10f14
+}
+
+.radio-group {
+  position: relative;
+  margin-bottom: 25px
+}
+
+.radio {
+  display: inline-block;
+  width: 204;
+  height: 104;
+  border-radius: 0;
+  background: lightblue;
+  box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  cursor: pointer;
+  margin: 8px 2px
+}
+
+.radio:hover {
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.3)
+}
+
+.radio.selected {
+  box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.1)
+}
+
+.fit-image {
+  width: 100%;
+  object-fit: cover
+}
+
+/* HIDE RADIO */
+[type=radio] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+
+[type=radio] + img {
+  cursor: pointer;
+}
+
+
+[type=radio]:checked + img {
+  background-color: silver;
+}
+.grp_engr:focus-within {
+  background:silver;
+}
+.grp_medical:focus-within {
+  background:silver;
+}
+.grp_other:focus-within {
+  background:silver;
+}
+
+[type=radio]{
+  cursor: pointer;
+}
+
+
+[type=radio]:checked {
+  background-color: silver;
+}
+.fee-voucher{
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: -12%;
+  box-shadow: 0 5px 35px 15px rgba(0, 0, 0, 0.2);
+}
+.payment-icons{
+  background-color: white;
+  border-radius: 50px;
+  padding: 17px;
+  height: 70px;
+  width: 70px;
+  box-shadow: 0px 10px 10px -7px rgba(0, 0, 0, 0.3);
+}
+
+.payment-img{
+  width: 40px;
+}
+.pt-1{
+  padding-top: 10px;
+}
+.pt-2{
+  padding-top: 20px;
+}
+.pt-3{
+  padding-top: 30px;
+}
+.pt-4{
+  padding-top: 40px;
+}
+.courses:hover {
+  background:silver;
+}
+.selectedClass{
+  background-color: silver;
+  display: inline-block;
+  box-shadow: 0px 10px 10px -7px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+
+}
