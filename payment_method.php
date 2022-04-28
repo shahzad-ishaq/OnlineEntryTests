@@ -1,6 +1,10 @@
 <?php
 session_start();
-$_SESSION["post_check"] = "yes_post_$";
+if (isset($_SESSION['payment_method_check']) && $_SESSION['payment_method_check'] == 'yes_post_$') {
+    $session_value = 'true';
+
+    $_SESSION['payment_method_check'] = '';
+
 if (isset($_POST['bank_watcher_no'])) $bank_watcher_no = $_POST['bank_watcher_no'];
 ?>
 <html lang="en">
@@ -132,5 +136,10 @@ if (isset($_POST['bank_watcher_no'])) $bank_watcher_no = $_POST['bank_watcher_no
 </div>
 </body>
 </html>
-
+<?php
+}else {
+    echo "<h2>Your Browser Session is Expired, Please try again. <a href='/'>Reload Page</a></h2>";
+    exit();
+}
+?>
 

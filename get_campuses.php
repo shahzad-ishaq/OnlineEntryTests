@@ -3,7 +3,7 @@ require_once('functions.php');
 
 if (is_numeric($_POST['institute_id'])) {
 if(isset($_POST['cityID'])) {
-    echo $cityID = trim($_POST['cityID']);
+     $cityID = trim($_POST['cityID']);
 }else{
     $cityID='';
 }

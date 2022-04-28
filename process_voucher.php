@@ -2,18 +2,142 @@
 session_start();
 date_default_timezone_set('Asia/Karachi');
 include('dbconnection.php');
-if (!isset($_POST['info_id'])) {
+function convert_number_to_words($number)
+{
 
-   //// header("Location: https://kips.edu.pk"); // Redirect browser
- ////   exit();
+    $hyphen = '-';
+    $conjunction = ' and ';
+    $separator = ', ';
+    $negative = 'negative ';
+    $decimal = ' point ';
+    $dictionary = array(
+        0 => 'zero',
+        1 => 'one',
+        2 => 'two',
+        3 => 'three',
+        4 => 'four',
+        5 => 'five',
+        6 => 'six',
+        7 => 'seven',
+        8 => 'eight',
+        9 => 'nine',
+        10 => 'ten',
+        11 => 'eleven',
+        12 => 'twelve',
+        13 => 'thirteen',
+        14 => 'fourteen',
+        15 => 'fifteen',
+        16 => 'sixteen',
+        17 => 'seventeen',
+        18 => 'eighteen',
+        19 => 'nineteen',
+        20 => 'twenty',
+        30 => 'thirty',
+        40 => 'fourty',
+        50 => 'fifty',
+        60 => 'sixty',
+        70 => 'seventy',
+        80 => 'eighty',
+        90 => 'ninety',
+        100 => 'hundred',
+        1000 => 'thousand',
+        1000000 => 'million',
+        1000000000 => 'billion',
+        1000000000000 => 'trillion',
+        1000000000000000 => 'quadrillion',
+        1000000000000000000 => 'quintillion'
+    );
+
+    if (!is_numeric($number)) {
+        return false;
+    }
+
+    if (($number >= 0 && (int)$number < 0) || (int)$number < 0 - PHP_INT_MAX) {
+        // overflow
+        trigger_error(
+            'convert_number_to_words only accepts numbers between -' . PHP_INT_MAX . ' and ' . PHP_INT_MAX,
+            E_USER_WARNING
+        );
+        return false;
+    }
+
+    if ($number < 0) {
+        return $negative . convert_number_to_words(abs($number));
+    }
+
+    $string = $fraction = null;
+
+    if (strpos($number, '.') !== false) {
+        list($number, $fraction) = explode('.', $number);
+    }
+
+    switch (true) {
+        case $number < 21:
+            $string = $dictionary[$number];
+            break;
+        case $number < 100:
+            $tens = ((int)($number / 10)) * 10;
+            $units = $number % 10;
+            $string = $dictionary[$tens];
+            if ($units) {
+                $string .= $hyphen . $dictionary[$units];
+            }
+            break;
+        case $number < 1000:
+            $hundreds = $number / 100;
+            $remainder = $number % 100;
+            $string = $dictionary[$hundreds] . ' ' . $dictionary[100];
+            if ($remainder) {
+                $string .= $conjunction . convert_number_to_words($remainder);
+            }
+            break;
+        default:
+            $baseUnit = pow(1000, floor(log($number, 1000)));
+            $numBaseUnits = (int)($number / $baseUnit);
+            $remainder = $number % $baseUnit;
+            $string = convert_number_to_words($numBaseUnits) . ' ' . $dictionary[$baseUnit];
+            if ($remainder) {
+                $string .= $remainder < 100 ? $conjunction : $separator;
+                $string .= convert_number_to_words($remainder);
+            }
+            break;
+    }
+
+    if (null !== $fraction && is_numeric($fraction)) {
+        $string .= $decimal;
+        $words = array();
+        foreach (str_split((string)$fraction) as $number) {
+            $words[] = $dictionary[$number];
+        }
+        $string .= implode(' ', $words);
+    }
+
+    return $string;
 }
-/*if (isset($_SESSION['post_check']) && $_SESSION['post_check'] == 'yes_post_$') {
+//include('header-nested.php');
+
+function generateRandomString($length)
+{
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return $randomString;
+}
+
+if (!isset($_POST['info_id'])) {
+   header("Location: https://kips.edu.pk"); // Redirect browser
+  exit();
+}
+
+if (isset($_SESSION['process_check']) && $_SESSION['process_check'] == 'yes_post_$') {
     $session_value = 'true';
-    $_SESSION['post_check'] = '';
-} else {
-    echo "<h2>Your Browser Session is Expired, Please try again. <a href='/'>Reload Page</a></h2>";
-    exit();
-}*/
+    $_SESSION['process_check'] = '';
+    $_SESSION['payment_method_check'] = 'yes_post_$';
+
+
 $receipt_no = '';
 $city = '';
 $city_id = '';
@@ -249,131 +373,6 @@ WHERE id='$session_id'";
 
     }
 }
-function convert_number_to_words($number)
-{
-
-    $hyphen = '-';
-    $conjunction = ' and ';
-    $separator = ', ';
-    $negative = 'negative ';
-    $decimal = ' point ';
-    $dictionary = array(
-        0 => 'zero',
-        1 => 'one',
-        2 => 'two',
-        3 => 'three',
-        4 => 'four',
-        5 => 'five',
-        6 => 'six',
-        7 => 'seven',
-        8 => 'eight',
-        9 => 'nine',
-        10 => 'ten',
-        11 => 'eleven',
-        12 => 'twelve',
-        13 => 'thirteen',
-        14 => 'fourteen',
-        15 => 'fifteen',
-        16 => 'sixteen',
-        17 => 'seventeen',
-        18 => 'eighteen',
-        19 => 'nineteen',
-        20 => 'twenty',
-        30 => 'thirty',
-        40 => 'fourty',
-        50 => 'fifty',
-        60 => 'sixty',
-        70 => 'seventy',
-        80 => 'eighty',
-        90 => 'ninety',
-        100 => 'hundred',
-        1000 => 'thousand',
-        1000000 => 'million',
-        1000000000 => 'billion',
-        1000000000000 => 'trillion',
-        1000000000000000 => 'quadrillion',
-        1000000000000000000 => 'quintillion'
-    );
-
-    if (!is_numeric($number)) {
-        return false;
-    }
-
-    if (($number >= 0 && (int)$number < 0) || (int)$number < 0 - PHP_INT_MAX) {
-        // overflow
-        trigger_error(
-            'convert_number_to_words only accepts numbers between -' . PHP_INT_MAX . ' and ' . PHP_INT_MAX,
-            E_USER_WARNING
-        );
-        return false;
-    }
-
-    if ($number < 0) {
-        return $negative . convert_number_to_words(abs($number));
-    }
-
-    $string = $fraction = null;
-
-    if (strpos($number, '.') !== false) {
-        list($number, $fraction) = explode('.', $number);
-    }
-
-    switch (true) {
-        case $number < 21:
-            $string = $dictionary[$number];
-            break;
-        case $number < 100:
-            $tens = ((int)($number / 10)) * 10;
-            $units = $number % 10;
-            $string = $dictionary[$tens];
-            if ($units) {
-                $string .= $hyphen . $dictionary[$units];
-            }
-            break;
-        case $number < 1000:
-            $hundreds = $number / 100;
-            $remainder = $number % 100;
-            $string = $dictionary[$hundreds] . ' ' . $dictionary[100];
-            if ($remainder) {
-                $string .= $conjunction . convert_number_to_words($remainder);
-            }
-            break;
-        default:
-            $baseUnit = pow(1000, floor(log($number, 1000)));
-            $numBaseUnits = (int)($number / $baseUnit);
-            $remainder = $number % $baseUnit;
-            $string = convert_number_to_words($numBaseUnits) . ' ' . $dictionary[$baseUnit];
-            if ($remainder) {
-                $string .= $remainder < 100 ? $conjunction : $separator;
-                $string .= convert_number_to_words($remainder);
-            }
-            break;
-    }
-
-    if (null !== $fraction && is_numeric($fraction)) {
-        $string .= $decimal;
-        $words = array();
-        foreach (str_split((string)$fraction) as $number) {
-            $words[] = $dictionary[$number];
-        }
-        $string .= implode(' ', $words);
-    }
-
-    return $string;
-}
-//include('header-nested.php');
-
-function generateRandomString($length)
-{
-    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    $charactersLength = strlen($characters);
-    $randomString = '';
-    for ($i = 0; $i < $length; $i++) {
-        $randomString .= $characters[rand(0, $charactersLength - 1)];
-    }
-    return $randomString;
-}
-
 $kips_code = "0092";
 $type_id = "2";
 $years_month = date("ym");
@@ -420,7 +419,11 @@ if ($cellphone_number != '') {
     $cellphone = '92' . $num[0] . $num[1];
     $smstext = 'Welcome To KIPS. Please use Voucher ' . $bank_watcher_no . ' to submit your fee online via kuickpay, for details visit www.kuickpay.com. After confirmation LMS account detail will be shared on session start date.';
     $mobile = formatMobileNo($cellphone_number);
-    ////sendsms($ping->data, $mobile, $smstext, 'KIPS PREPS');
+    sendsms($mobile, $smstext, 'KIPS PREPS');
 }
 
+} else {
+    echo "<h2>Your Browser Session is Expired, Please try again. <a href='/'>Reload Page</a></h2>";
+    exit();
+}
 ?>

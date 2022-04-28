@@ -1,6 +1,10 @@
 <?php
 session_start();
-$_SESSION["post_check"] = "yes_post_$";
+if (isset($_SESSION['post_check']) && $_SESSION['post_check'] == 'yes_post_$') {
+$session_value = 'true';
+$_SESSION["sms_check"] = "yes_post_$";
+$_SESSION['post_check'] = '';
+
 include('dbconnection.php');
 
 if (isset($_POST['cnic'])) {
@@ -102,6 +106,12 @@ if ($sql->num_rows > 0) {
 </div>
 </body>
 </html>
+<?php
+} else {
+    echo "<h2>Your Browser Session is Expired, Please try again. <a href='/'>Reload Page</a></h2>";
+    exit();
+}
+?>
 <script>
     function validatenumber(event) {
         var key = window.event ? event.keyCode : event.which;

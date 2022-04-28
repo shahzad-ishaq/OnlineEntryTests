@@ -1,4 +1,10 @@
 <?php
+session_start();
+
+if (isset($_SESSION['detail_check']) && $_SESSION['detail_check'] == 'yes_post_$') {
+    $session_value = 'true';
+    $_SESSION['process_check'] = 'yes_post_$';
+    $_SESSION['detail_check'] = '';
 if(isset($_POST["id"])) {
     $id = $_POST["id"];
     $student_name = $_POST["student_name"];
@@ -6,6 +12,8 @@ if(isset($_POST["id"])) {
     header("Location: https://kips.edu.pk");
       exit();
 }
+
+
 
 ?>
 
@@ -327,6 +335,12 @@ if(isset($_POST["id"])) {
             </div>
     </body>
     </html>
+    <?php
+} else {
+    echo "<h2>Your Browser Session is Expired, Please try again. <a href='/'>Reload Page</a></h2>";
+    exit();
+}
+    ?>
     <script>
         function check_form() {
             if ($('#msform').valid()) {

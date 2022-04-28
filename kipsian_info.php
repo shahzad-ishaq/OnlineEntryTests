@@ -1,6 +1,7 @@
 <?php
 session_start();
-$_SESSION["post_check"] = "yes_post_$";?>
+$_SESSION["post_check"] = "yes_post_$";
+?>
 <html lang="en">
 <head>
     <title>Online Admission Forms</title>
@@ -64,6 +65,7 @@ $_SESSION["post_check"] = "yes_post_$";?>
 </div>
 </body>
 </html>
+
 <script>
     function validatenumber(event) {
         var key = window.event ? event.keyCode : event.which;

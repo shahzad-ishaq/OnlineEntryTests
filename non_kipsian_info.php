@@ -1,6 +1,6 @@
 <?php
 session_start();
-$_SESSION["post_check"] = "yes_post_$";?>
+$_SESSION["sms_check"] = "yes_post_$";?>
 <html lang="en">
 <head>
     <title>Online Admission Forms</title>

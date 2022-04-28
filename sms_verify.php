@@ -1,18 +1,12 @@
 <?php
 session_start();
-//$session_value = 'false';
-//if (!isset($_POST['student_name'])) {
-//    exit();
-//}
-//if (isset($_SESSION['post_check']) && $_SESSION['post_check'] == 'yes_post_$') {
-//    $session_value = 'true';
-//    $_SESSION['detail_check'] = 'yes_post';
-//    $_SESSION['post_check'] = '';
-//} else {
-//    echo "<h2>Your Browser Session is Expired, Please try again. <a href='/'>Reload Page</a></h2>";
-//    exit();
-//}
-//if (isset($_POST['student_name'])) {
+$session_value = 'false';
+if (isset($_SESSION['sms_check']) && $_SESSION['sms_check'] == 'yes_post_$') {
+    $session_value = 'true';
+    $_SESSION['detail_check'] = 'yes_post_$';
+    $_SESSION['sms_check'] = '';
+
+
     include("ajax_sms.php");
     include("sendMail.php");
 
@@ -24,6 +18,7 @@ session_start();
 	if (isset($_POST['campus_type_id'])) $campus_type_id = $_POST['campus_type_id'];
     $rendem_num = sprintf("%06d", mt_rand(1, 999999));
     include('dbconnection.php');
+
     $strSQL = "insert into online_admissions set
     student_name = UPPER('$student_name'),
     cellphone = '$cellphone_number',
@@ -33,26 +28,24 @@ session_start();
     cnic = '$cnic',
     campus_type_id= '$campus_type_id'";
 
+
     if ($link->query($strSQL) === TRUE) {
         $insert_id = $link->insert_id;
         $message = smsText($rendem_num);
         $mobile = formatMobileNo($cellphone_number);
-       /// sendsms($ping->data, $mobile, $message, 'KIPS PREPS');
+        sendsms($mobile, $message, 'KIPS PREPS');
         $email_massage = "<p>Dear $student_name,</p><br>
 						<p>Please use $rendem_num as Verification code for online admission.</p><br><br>
                            Sincerely, <br>
                            KIPS PREPS<br><br><br>
 						   <p><i><b>*** This is an automatically generated email. Please do not reply to it. ***</b></i></p>";
         $massage_from = "KIPS PREPS";
-        //send_email($email_address,$student_name,$massage_from,$email_massage);
+        send_email($email_address,$student_name,$massage_from,$email_massage);
         $receipt_no = $link->insert_id;
         $record_save_message = "<h2>Application Submitted Successfully</h2>";
     } else {
         $record_save_message = "<h2>Error: " . $strSQL . "<br>" . $link->error . "<h2>";
     }
-
-
-//}
 
 ?>
 
@@ -185,6 +178,12 @@ session_start();
             </div>
     </body>
     </html>
+    <?php
+} else {
+    echo "<h2>Your Browser Session is Expired, Please try again. <a href='/'>Reload Page</a></h2>";
+    exit();
+}
+    ?>
     <script>
         $(function () {
             'use strict';
